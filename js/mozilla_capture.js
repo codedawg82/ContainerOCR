@@ -26,8 +26,6 @@
                         URL.revokeObjectURL(imgURL);
                     };
 
-                    console.log("Preparing HTTP POST request");
-
                     // Send file to ComputerVision
                     var http = new XMLHttpRequest();
                     var urlVision = "https://api.projectoxford.ai/vision/v1.0/ocr?language=en&detectOrientation=true";
@@ -46,15 +44,15 @@
                     http.onreadystatechange = function () {
                         //Call a function when the state changes.
                         if (http.readyState == 4 && http.status == 200) {
-                            alert(http.responseText);
-                        } else {
+                            //alert(http.responseText);
                             var ocr_text = document.querySelector("#ocr_text");
                             ocr_text.innerHTML = http.responseText;
                         }
+                        //else {
+                        //    var ocr_text = document.querySelector("#ocr_text");
+                        //    ocr_text.innerHTML = http.responseText;
+                        //}
                     }
-
-                    console.log("sending request");
-                    console.log(imgURL);
 
                     http.send(file);
 
